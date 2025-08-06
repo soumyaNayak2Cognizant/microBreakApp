@@ -29,7 +29,7 @@ export const generateBreakSchedule = (workStart: string, workEnd: string, breakF
     breaks.push({
       time: formatTime(current + freq * 60),
       duration: dur,
-      activity: suggestActivity(),
+      ...suggestActivity(),
     });
     current += freq * 60;
   }
@@ -49,12 +49,18 @@ function formatTime(seconds: number) {
 
 function suggestActivity() {
   const activities = [
-    'Stretch your legs',
-    'Drink water',
-    'Look away from the screen',
-    'Take deep breaths',
-    'Walk around',
-    'Do a quick meditation',
+    { name: 'Stretch your legs', gif: 'https://media.tenor.com/2uyENRqaO6IAAAAM/leg-stretch.gif' },
+    { name: 'Drink water', gif: 'https://media.tenor.com/1v1QwQvQwQwAAAAM/drink-water.gif' },
+    { name: 'Look away from the screen', gif: 'https://media.tenor.com/2QwQwQvQwQwAAAAM/look-away.gif' },
+    { name: 'Take deep breaths', gif: 'https://media.tenor.com/1QwQwQvQwQwAAAAM/deep-breath.gif' },
+    { name: 'Walk around', gif: 'https://media.tenor.com/2QwQwQvQwQwAAAAM/walk-around.gif' },
+    { name: 'Do a quick meditation', gif: 'https://media.tenor.com/1QwQwQvQwQwAAAAM/meditation.gif' },
+    { name: 'Do 5 squats', gif: 'https://media.tenor.com/1QwQwQvQwQwAAAAM/squats.gif' },
+    { name: 'Shoulder rolls', gif: 'https://media.tenor.com/2QwQwQvQwQwAAAAM/shoulder-rolls.gif' },
+    { name: 'Neck stretches', gif: 'https://media.tenor.com/1QwQwQvQwQwAAAAM/neck-stretch.gif' },
+    { name: 'Hand stretches', gif: 'https://media.tenor.com/2QwQwQvQwQwAAAAM/hand-stretch.gif' },
+    { name: 'Listen to a song', gif: 'https://media.tenor.com/1QwQwQvQwQwAAAAM/listen-music.gif' },
+    { name: 'Smile!', gif: 'https://media.tenor.com/2QwQwQvQwQwAAAAM/smile.gif' },
   ];
   return activities[Math.floor(Math.random() * activities.length)];
 }
